@@ -15,6 +15,7 @@ public class ProductoVendido {
     private int cantidad;
     private Venta venta;
 
+    //CONSTRUCTOR CON TODOS LOS PARAMETROS
     public ProductoVendido(Long productoId, String nombre, BigDecimal precioUnitario, int cantidad, Venta venta){
         this.productoId = productoId;
         this.nombre = nombre;
@@ -23,6 +24,7 @@ public class ProductoVendido {
         this.venta = venta;
     }
 
+    //CONSTRUCTOR SIN EL PARAMETRO DE VENTA
         public ProductoVendido(Long productoId, String nombre, BigDecimal precioUnitario, int cantidad){
         this.productoId = productoId;
         this.nombre = nombre;

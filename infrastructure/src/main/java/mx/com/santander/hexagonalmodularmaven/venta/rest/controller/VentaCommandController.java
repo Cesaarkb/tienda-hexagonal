@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import mx.com.santander.hexagonalmodularmaven.venta.adapter.mapper.VentaCreateReqToCommandMapper;
 import mx.com.santander.hexagonalmodularmaven.venta.adapter.mapper.mappermanual.ManualVentaMapper;
 import mx.com.santander.hexagonalmodularmaven.venta.command.VentaCreateHandler;
 import mx.com.santander.hexagonalmodularmaven.venta.model.dto.VentaDto;
@@ -23,7 +22,6 @@ import mx.com.santander.hexagonalmodularmaven.venta.rest.controller.dto.VentaCre
 public class VentaCommandController {
 
     private final VentaCreateHandler ventaCreateHandler;
-    private final VentaCreateReqToCommandMapper ventaCreateReqToCommandMapper;
     private final ManualVentaMapper manualVentaMapper; 
 
     @PostMapping()

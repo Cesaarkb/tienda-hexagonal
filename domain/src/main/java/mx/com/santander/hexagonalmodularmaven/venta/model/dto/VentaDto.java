@@ -15,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class VentaDto {
 
-    private Long Id;
+    private Long id;
     private Long clienteId;
     private List<ProductoVendidoDto> productosVendidos;
     private BigDecimal precioTotal;

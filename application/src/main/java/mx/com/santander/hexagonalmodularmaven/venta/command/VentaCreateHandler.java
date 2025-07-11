@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
 import mx.com.santander.hexagonalmodularmaven.venta.mapper.ManualDomToDtoMapper;
-import mx.com.santander.hexagonalmodularmaven.venta.mapper.VentaDomToDtoMapper;
 import mx.com.santander.hexagonalmodularmaven.venta.model.dto.VentaDto;
 import mx.com.santander.hexagonalmodularmaven.venta.model.dto.command.VentaCreateCommand;
 import mx.com.santander.hexagonalmodularmaven.venta.service.VentaCreateService;
@@ -14,7 +13,6 @@ import mx.com.santander.hexagonalmodularmaven.venta.service.VentaCreateService;
 public class VentaCreateHandler {
 
     private final VentaCreateService ventaCreateService;
-    private final VentaDomToDtoMapper ventaDomToDtoMapper;
     private final ManualDomToDtoMapper manualDomToDtoMapper;
 
     public VentaDto execute(VentaCreateCommand command){

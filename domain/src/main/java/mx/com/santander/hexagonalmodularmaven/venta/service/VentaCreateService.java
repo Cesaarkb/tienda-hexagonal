@@ -1,5 +1,6 @@
 package mx.com.santander.hexagonalmodularmaven.venta.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.RequiredArgsConstructor;
@@ -17,17 +18,21 @@ public class VentaCreateService {
     private final ProductoDao productoDao;
 
     public Venta execute(VentaCreateCommand command){
-        List<ProductoVendido> productosVendidos = command.getProductosVendidos().stream()
-        .map(prodVend -> {
-            Producto producto = productoDao.getbyId(prodVend.getIdProducto());
-        return new ProductoVendido(
-            prodVend.getIdProducto(),
+
+        Venta venta = new Venta(command.getIdCliente(), new ArrayList<>());
+
+    List<ProductoVendido> productoVendidoDomain = command.getProductosVendidos().stream()
+    .map(prodVenDom -> {
+        Producto producto = productoDao.getbyId(prodVenDom.getIdProducto());
+        ProductoVendido productoVendido = new ProductoVendido(
+            prodVenDom.getIdProducto(),
             producto.getNombre(),
             producto.getPrecio(),
-            prodVend.getCantidad());
+            prodVenDom.getCantidad(),
+            venta);
+        return productoVendido;
     }).toList();
-        Venta venta = new Venta(command.getIdCliente(), productosVendidos);
+        venta.setProductosVendidos(productoVendidoDomain);
         return ventaRepository.saveVenta(venta);
-    
     }
 }

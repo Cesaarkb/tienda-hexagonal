@@ -4,11 +4,13 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class Venta {
 
     private Long id;
@@ -17,7 +19,8 @@ public class Venta {
     private BigDecimal precioTotal;
     private LocalDateTime fechaCompra;
 
-    
+
+        //CONSTRUCTOR PARA CREAR UNA VENTA
        public Venta(Long clienteId, List<ProductoVendido> productosVendidos) {
         this.clienteId = clienteId;
         this.productosVendidos = productosVendidos;

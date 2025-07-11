@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ProductoVendidoDto {
 
-    private Long id;
+    private Long productoId;
     private String nombre;
     private Integer cantidad;
     private BigDecimal precioUnitario;
