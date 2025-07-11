@@ -26,6 +26,7 @@ public class ProductoVendidoEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+    private Long productoId;
     private String nombre;
     private BigDecimal precioUnitario;
     private int cantidad;
@@ -33,5 +34,12 @@ public class ProductoVendidoEntity {
       @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "venta_id")
     private VentaEntity venta;
+
+    public ProductoVendidoEntity(Long productoId, String nombre, BigDecimal precioUnitario, int cantidad){
+        this.productoId = productoId;
+        this.nombre = nombre;
+        this.precioUnitario = precioUnitario;
+        this.cantidad = cantidad;
+    }
 
 }

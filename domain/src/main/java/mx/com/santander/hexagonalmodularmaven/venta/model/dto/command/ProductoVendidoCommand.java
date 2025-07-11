@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ProductoVendidoCommand {
 
-    private Long id;
+    private Long idProducto;
     private Integer cantidad;
 
 }

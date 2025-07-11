@@ -19,10 +19,10 @@ import lombok.Setter;
 public class ProductoVendidoRequest {
 
     @NotNull(message = "El ID es obligatorio")
-    private Long id;
+    private Long idProducto;
     @NotNull(message="La cantidad no puede estar vacia")
     @Min(value=1, message="La cantidad debe ser mínimo de 1")
     private Integer cantidad;
 
 
-}
+}                                                                                                                                      

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import mx.com.santander.hexagonalmodularmaven.venta.adapter.mapper.VentaCreateReqToCommandMapper;
+import mx.com.santander.hexagonalmodularmaven.venta.adapter.mapper.mappermanual.ManualVentaMapper;
 import mx.com.santander.hexagonalmodularmaven.venta.command.VentaCreateHandler;
 import mx.com.santander.hexagonalmodularmaven.venta.model.dto.VentaDto;
 import mx.com.santander.hexagonalmodularmaven.venta.model.dto.command.VentaCreateCommand;
@@ -23,10 +24,11 @@ public class VentaCommandController {
 
     private final VentaCreateHandler ventaCreateHandler;
     private final VentaCreateReqToCommandMapper ventaCreateReqToCommandMapper;
+    private final ManualVentaMapper manualVentaMapper; 
 
     @PostMapping()
     public ResponseEntity<VentaDto> createVenta(@Valid @RequestBody VentaCreateRequest request) {
-       VentaCreateCommand command = ventaCreateReqToCommandMapper.toCommand(request);
+       VentaCreateCommand command = manualVentaMapper.toCommand(request);
        return new ResponseEntity<>(ventaCreateHandler.execute(command), HttpStatus.CREATED);
     }
     

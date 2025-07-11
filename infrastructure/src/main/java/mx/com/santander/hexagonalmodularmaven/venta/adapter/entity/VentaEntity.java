@@ -27,11 +27,14 @@ public class VentaEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<ProductoVendidoEntity> productosVendidos;
+
     private Long clienteId;
     private BigDecimal precioTotal;
     private LocalDateTime fechaCompra;
 
-     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductoVendidoEntity> productosVendidos;
+
 
 }
