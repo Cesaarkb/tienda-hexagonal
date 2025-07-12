@@ -26,10 +26,9 @@ public class VentaCommandController {
 
     @PostMapping()
     public ResponseEntity<VentaDto> createVenta(@Valid @RequestBody VentaCreateRequest request) {
+        System.out.println("SE INGRESA A METODO POST");
        VentaCreateCommand command = manualVentaMapper.toCommand(request);
        return new ResponseEntity<>(ventaCreateHandler.execute(command), HttpStatus.CREATED);
     }
-    
-
 
 }

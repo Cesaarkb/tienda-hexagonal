@@ -25,12 +25,11 @@ public class Venta {
         this.clienteId = clienteId;
         this.productosVendidos = productosVendidos;
         this.fechaCompra = LocalDateTime.now();
-        this.precioTotal = calcularPrecioTotal();
     }
 
-    private BigDecimal calcularPrecioTotal() {
-        return productosVendidos.stream()
-            .map(ProductoVendido::calcularSubtotal)
-            .reduce(BigDecimal.ZERO, BigDecimal::add);
+    public void calcularPrecioTotal() {
+          this.precioTotal = productosVendidos.stream()
+        .map(ProductoVendido::calcularSubtotal)
+        .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }

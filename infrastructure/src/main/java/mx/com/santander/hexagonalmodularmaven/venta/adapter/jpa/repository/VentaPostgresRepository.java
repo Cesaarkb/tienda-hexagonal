@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import mx.com.santander.hexagonalmodularmaven.venta.adapter.entity.VentaEntity;
 import mx.com.santander.hexagonalmodularmaven.venta.adapter.jpa.VentaSpringJpaAdapterRepository;
 import mx.com.santander.hexagonalmodularmaven.venta.adapter.mapper.mappermanual.ManualVentaMapper;
+import mx.com.santander.hexagonalmodularmaven.venta.adapter.mapper.mappermanual.VentaEntityToDomain;
 import mx.com.santander.hexagonalmodularmaven.venta.model.entity.Venta;
 import mx.com.santander.hexagonalmodularmaven.venta.port.repository.VentaRepository;
 
@@ -17,13 +18,14 @@ import mx.com.santander.hexagonalmodularmaven.venta.port.repository.VentaReposit
 public class VentaPostgresRepository implements VentaRepository{
 
     private final VentaSpringJpaAdapterRepository ventaSpringJpaAdapterRepository;
-    private final ManualVentaMapper ventaManualMapper;    
+    private final ManualVentaMapper ventaManualMapper;
+    private final VentaEntityToDomain ventaEntityToDomain;
 
     @Override
     public Venta saveVenta(Venta venta) {   
         VentaEntity entity = ventaManualMapper.domToEntity(venta);
         ventaSpringJpaAdapterRepository.save(entity);
-        return ventaManualMapper.entityToDomain(entity);
+        return ventaEntityToDomain.entityToDomain(entity);
     }
 
 }

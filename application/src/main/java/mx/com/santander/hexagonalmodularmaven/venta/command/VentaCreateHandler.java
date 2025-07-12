@@ -16,7 +16,6 @@ public class VentaCreateHandler {
     private final ManualDomToDtoMapper manualDomToDtoMapper;
 
     public VentaDto execute(VentaCreateCommand command){
-
         return manualDomToDtoMapper.toDto(ventaCreateService.execute(command));
         
     }

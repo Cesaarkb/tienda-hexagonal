@@ -33,6 +33,7 @@ public class VentaCreateService {
         return productoVendido;
     }).toList();
         venta.setProductosVendidos(productoVendidoDomain);
+        venta.calcularPrecioTotal();
         return ventaRepository.saveVenta(venta);
     }
 }

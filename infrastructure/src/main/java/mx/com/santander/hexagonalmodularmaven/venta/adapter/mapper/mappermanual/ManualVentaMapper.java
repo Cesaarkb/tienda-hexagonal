@@ -47,13 +47,6 @@ public class ManualVentaMapper {
         // domain.getFechaCompra());
     }
 
-    public Venta entityToDomain(VentaEntity entity) {
-        return new Venta(
-                entity.getId(),
-                entity.getClienteId(),
-                manualProductoVendidoMapper.toDomain(entity.getProductosVendidos()),
-                entity.getPrecioTotal(),
-                entity.getFechaCompra());
-    }
+  
 
 }

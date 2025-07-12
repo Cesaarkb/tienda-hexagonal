@@ -14,8 +14,7 @@ import mx.com.santander.hexagonalmodularmaven.venta.rest.controller.dto.Producto
 @Component
 @RequiredArgsConstructor
 public class ManualProductoVendidoMapper {
-
-    private final ManualVentaMapper manualVentaMapper;
+    private final VentaEntityToDomain ventaEntityToDomain;
 
     public List<ProductoVendidoCommand> toCommand(List<ProductoVendidoRequest> request){
         return request.stream().map(
@@ -26,13 +25,14 @@ public class ManualProductoVendidoMapper {
     }
 
     public List<ProductoVendido> toDomain(List<ProductoVendidoEntity> entity){
+        
         return entity.stream().map(
             ent -> new ProductoVendido(
                 ent.getProductoId(),
                 ent.getNombre(),
                 ent.getPrecioUnitario(),
                 ent.getCantidad(),
-                manualVentaMapper.entityToDomain(ent.getVenta())
+                ventaEntityToDomain.entityToDomain(ent.getVenta())
                 )
         ).toList();
     }
