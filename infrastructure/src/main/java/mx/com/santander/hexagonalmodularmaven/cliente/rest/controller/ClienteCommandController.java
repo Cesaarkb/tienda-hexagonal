@@ -24,7 +24,6 @@ public class ClienteCommandController {
 private final ClienteCreateReqToCommandMapper clienteCreateReqToCommandMapper;
 private final ClienteCreateHandler clienteCreateHandler;
 
-
     @PostMapping()
     public ResponseEntity<ClienteDto> createCliente(@Valid @RequestBody ClienteCreateRequest clienteRequest) {
         ClienteCreateCommand command = clienteCreateReqToCommandMapper.toCreateCommand(clienteRequest);

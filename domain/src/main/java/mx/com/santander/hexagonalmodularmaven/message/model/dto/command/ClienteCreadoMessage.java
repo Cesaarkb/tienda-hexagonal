@@ -9,6 +9,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class MessageCreateCommand {
-    private String message;
+public class ClienteCreadoMessage {
+    private Long id;
+    private String nombre;
+    private String apellido;
+    private String email;
 }

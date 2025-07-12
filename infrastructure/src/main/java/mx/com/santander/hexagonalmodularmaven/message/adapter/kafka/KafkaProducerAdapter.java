@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class KafkaProducerAdapter {
     private final KafkaTemplate<String, String> kafkaTemplate;
+
     public String produceMessage(String message) {
         CompletableFuture<SendResult<String, String>> future = kafkaTemplate.send("clientes_creados", message);
 
