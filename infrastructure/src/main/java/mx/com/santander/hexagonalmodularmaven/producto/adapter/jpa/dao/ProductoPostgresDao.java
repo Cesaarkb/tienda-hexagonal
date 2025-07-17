@@ -1,5 +1,7 @@
 package mx.com.santander.hexagonalmodularmaven.producto.adapter.jpa.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
@@ -25,6 +27,15 @@ public class ProductoPostgresDao implements ProductoDao{
 
         return productoEntityDomainMapper.toDomain(entity);
     }
+
+	@Override
+	public List<Producto> getAll() {
+		List<ProductoEntity> productosEntity =  productoSpringJpaAdapterRepository.findAll();
+		List<Producto> productosDom = productosEntity.stream()
+				.map(productoEntityDomainMapper::toDomain)
+				.toList();
+		return productosDom;
+	}
 
     
 

@@ -25,4 +25,20 @@ public class ProductoPostgresRepository implements ProductoRepository{
         return productoEntityToDomainMapper.toDomain(entity);
     }
 
+	@Override
+	public Producto updateProducto(Producto producto) {
+		ProductoEntity entity = productoDomToEntityMapper.toEntity(producto);
+        productoSpringJpaAdapterRepository.save(entity);
+        return productoEntityToDomainMapper.toDomain(entity);
+	}
+
+	@Override
+	public boolean deleteProducto(Long id) {
+		if(productoSpringJpaAdapterRepository.existsById(id)) {
+			productoSpringJpaAdapterRepository.deleteById(id);
+			return true;
+		}
+		return false;
+	}
+
 }

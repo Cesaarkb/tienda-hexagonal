@@ -5,5 +5,7 @@ import mx.com.santander.hexagonalmodularmaven.producto.model.entity.Producto;
 public interface ProductoRepository {
 
     Producto saveProducto(Producto producto);
+    Producto updateProducto(Producto producto);
+    boolean deleteProducto(Long id);
 
 }
