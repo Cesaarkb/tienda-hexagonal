@@ -27,4 +27,21 @@ public class ClientePostgresRepository implements ClienteRepository{
         return clienteEntityToDomainMapper.toDomain(clienteEntity);
     }
 
+	@Override
+	public Cliente update(Cliente cliente) {
+		ClienteEntity clienteEntity = clienteToEntityMapper.toEntity(cliente);
+        clienteSpringJpaAdapterRepository.save(clienteEntity);
+        return clienteEntityToDomainMapper.toDomain(clienteEntity);
+	}
+
+	@Override
+	public boolean deleteById(Long id) {
+		if(clienteSpringJpaAdapterRepository.existsById(id)) {
+			clienteSpringJpaAdapterRepository.deleteById(id);
+			return true;	
+		}
+		
+		return false;
+	}
+
 }

@@ -1,6 +1,7 @@
 package mx.com.santander.hexagonalmodularmaven.cliente.adapter.jpa.dao;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
@@ -35,5 +36,16 @@ public class ClientePostgresDao implements ClienteDao{
         .findByEmail(email)
         .map(clienteEntityToDomainMapper::toDomain);
     }
+
+	@Override
+	public List<Cliente> getAllClientes() {
+		List<ClienteEntity> clientesEntity = clienteSpringJpaAdapterRepository.findAll();
+		
+		List<Cliente> clientesDomain = clientesEntity.stream()
+		.map(clienteEntityToDomainMapper::toDomain)
+		.toList();
+		
+		return clientesDomain;
+	}
 
 }
