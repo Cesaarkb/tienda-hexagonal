@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import mx.com.santander.hexagonalmodularmaven.producto.port.dao.ProductoDao;
+import mx.com.santander.hexagonalmodularmaven.producto.port.repository.ProductoRepository;
 import mx.com.santander.hexagonalmodularmaven.venta.port.repository.VentaRepository;
 import mx.com.santander.hexagonalmodularmaven.venta.service.VentaCreateService;
 
@@ -11,7 +12,9 @@ import mx.com.santander.hexagonalmodularmaven.venta.service.VentaCreateService;
 public class VentaBean {
 
     @Bean
-    public VentaCreateService ventaCreateService(VentaRepository ventaRepository, ProductoDao productoDao){
-        return new VentaCreateService(ventaRepository, productoDao);
+    public VentaCreateService ventaCreateService(VentaRepository ventaRepository, 
+    		ProductoRepository productoRepository,
+    		ProductoDao productoDao){
+        return new VentaCreateService(ventaRepository,productoRepository, productoDao);
     }
 }

@@ -27,9 +27,4 @@ public class Venta {
         this.fechaCompra = LocalDateTime.now();
     }
 
-    public void calcularPrecioTotal() {
-          this.precioTotal = productosVendidos.stream()
-        .map(ProductoVendido::calcularSubtotal)
-        .reduce(BigDecimal.ZERO, BigDecimal::add);
-    }
 }
